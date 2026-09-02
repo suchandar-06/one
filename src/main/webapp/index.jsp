@@ -3,776 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexusShop — Premium Minimalist Store</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>CarePlus Health Hospital</title>
     <style>
-        :root {
-            --bg-main: #f8f9fa;
-            --bg-card: #ffffff;
-            --text-dark: #0f172a;
-            --text-muted: #64748b;
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --accent: #f59e0b;
-            --border-light: #e2e8f0;
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
-            --radius-lg: 24px;
-            --radius-md: 16px;
-            --radius-sm: 10px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #0077b6;
+            --secondary-color: #00b4d8;
+            --accent-color: #caf0f8;
+            --text-color: #2b2d42;
+            --light-bg: #f8f9fa;
         }
 
         body {
-            background-color: var(--bg-main);
-            color: var(--text-dark);
+            color: var(--text-color);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Glassmorphism Sticky Header */
+        /* Navigation */
         header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-light);
-            transition: var(--transition);
+            z-index: 100;
         }
 
-        .header-inner {
+        nav {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            height: 80px;
-            gap: 24px;
-        }
-
-        .brand {
-            display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
         }
 
-        .brand i {
-            color: var(--primary);
-            font-size: 26px;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
         }
 
-        .brand .accent {
-            color: var(--primary);
-        }
-
-        .main-nav ul {
+        .nav-links {
             display: flex;
-            gap: 32px;
+            list-style: none;
+            gap: 2rem;
         }
 
-        .main-nav a {
-            font-size: 15px;
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
             font-weight: 500;
-            color: var(--text-muted);
-            transition: var(--transition);
+            transition: color 0.3s;
         }
 
-        .main-nav a:hover, .main-nav a.active {
-            color: var(--primary);
+        .nav-links a:hover {
+            color: var(--primary-color);
         }
 
-        .search-wrap {
-            position: relative;
-            flex-grow: 1;
-            max-width: 360px;
-        }
-
-        .search-wrap input {
-            width: 100%;
-            padding: 12px 20px 12px 48px;
-            border-radius: 99px;
-            border: 1px solid var(--border-light);
-            background: #f1f5f9;
-            font-size: 14px;
-            outline: none;
-            transition: var(--transition);
-        }
-
-        .search-wrap input:focus {
-            background: #fff;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
-        }
-
-        .search-wrap i {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .icon-btn {
-            position: relative;
-            background: transparent;
-            border: none;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: var(--text-dark);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .icon-btn:hover {
-            background: #f1f5f9;
-            color: var(--primary);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: 4px;
-            right: 4px;
-            background: var(--primary);
-            color: white;
-            font-size: 11px;
-            font-weight: 700;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Hero Modern Section */
+        /* Hero Section */
         .hero {
-            padding: 40px 0 80px;
-        }
-
-        .hero-banner {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            border-radius: var(--radius-lg);
-            padding: 80px 60px;
+            background: linear-gradient(rgba(0, 119, 182, 0.8), rgba(0, 180, 216, 0.8)), 
+                        url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80') center/cover;
             color: white;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
+            text-align: center;
+            padding: 6rem 2rem;
         }
 
-        .hero-banner::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(37,99,235,0.3) 0%, rgba(255,255,255,0) 70%);
-            border-radius: 50%;
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
         }
 
-        .hero-content {
-            max-width: 560px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 99px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #93c5fd;
-            margin-bottom: 20px;
-        }
-
-        .hero-content h1 {
-            font-size: 52px;
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -1px;
-            margin-bottom: 20px;
-        }
-
-        .hero-content p {
-            font-size: 18px;
-            color: #94a3b8;
-            margin-bottom: 32px;
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
         }
 
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 28px;
-            border-radius: 99px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
             border: none;
+            cursor: pointer;
+            transition: background 0.3s;
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
+        .btn:hover {
+            background-color: #005681;
         }
 
-        .btn-primary:hover {
-            background: var(--primary-hover);
-            transform: translateY(-2px);
+        /* Content Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
         }
 
-        .btn-ghost {
-            background: transparent;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            margin-left: 12px;
-        }
-
-        .btn-ghost:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Section Layouts */
-        .section {
-            padding: 60px 0;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 40px;
-        }
-
-        .section-title h2 {
-            font-size: 32px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .section-title p {
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-
-        .view-all {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .view-all:hover {
-            gap: 10px;
-        }
-
-        /* Category Grid */
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-        }
-
-        .cat-card {
-            background: var(--bg-card);
-            border-radius: var(--radius-md);
-            padding: 24px;
+        .section-title {
             text-align: center;
-            border: 1px solid var(--border-light);
-            transition: var(--transition);
-            cursor: pointer;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 2.5rem;
         }
 
-        .cat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-color: transparent;
-        }
-
-        .cat-card i {
-            font-size: 28px;
-            color: var(--primary);
-            background: #eff6ff;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-        }
-
-        .cat-card h4 {
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .cat-card span {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        /* Product Cards Grid */
-        .products-grid {
+        /* Services Grid */
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
         }
 
-        .product-card {
-            background: var(--bg-card);
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-light);
-            overflow: hidden;
-            transition: var(--transition);
+        .service-card {
+            background-color: var(--light-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border-top: 4px solid var(--primary-color);
+            text-align: center;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Appointment Form */
+        .appointment-section {
+            background-color: var(--accent-color);
+            border-radius: 10px;
+            padding: 3rem 2rem;
+        }
+
+        .appointment-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .form-group {
             display: flex;
             flex-direction: column;
         }
 
-        .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .img-wrap {
-            position: relative;
-            background: #f8fafc;
-            height: 260px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .img-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .product-card:hover .img-wrap img {
-            transform: scale(1.05);
-        }
-
-        .wish-btn {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: white;
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--shadow-sm);
-            color: var(--text-muted);
-            transition: var(--transition);
-        }
-
-        .wish-btn:hover {
-            color: #ef4444;
-            transform: scale(1.1);
-        }
-
-        .product-card .body {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .category-tag {
-            font-size: 12px;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-        }
-
-        .product-card h5 {
-            font-size: 17px;
+        .form-group label {
+            margin-bottom: 0.5rem;
             font-weight: 600;
-            margin-bottom: 8px;
         }
 
-        .rating {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            color: var(--accent);
-            font-size: 13px;
-            margin-bottom: 16px;
-        }
-
-        .price-row {
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-            margin-top: auto;
-        }
-
-        .price {
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .old-price {
-            font-size: 14px;
-            color: var(--text-muted);
-            text-decoration: line-through;
-        }
-
-        .add-btn {
-            width: 100%;
-            padding: 12px;
-            margin-top: 16px;
-            background: #f1f5f9;
-            color: var(--text-dark);
-            border: none;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .product-card:hover .add-btn {
-            background: var(--primary);
-            color: white;
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
         }
 
         /* Footer */
         footer {
-            background: #0f172a;
-            color: #94a3b8;
-            padding: 80px 0 30px;
-            margin-top: 80px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr repeat(3, 1fr);
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .footer-grid h5 {
+            background-color: var(--text-color);
             color: white;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        .footer-grid ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-grid ul a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #1e293b;
-            padding-top: 30px;
             text-align: center;
-            font-size: 14px;
+            padding: 2rem;
+            margin-top: 4rem;
         }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 992px) {
-            .hero-banner h1 { font-size: 40px; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-            .main-nav { display: none; }
-        }
-
-        @media (max-width: 640px) {
-            .hero-banner { padding: 40px 24px; }
-            .products-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Can be toggled with JavaScript if needed */
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Header / Navigation -->
     <header>
-        <div class="container">
-            <div class="header-inner">
-                <a href="#" class="brand">
-                    <i class="fa-solid fa-bolt-lightning"></i>
-                    <span>Nexus<span class="accent">Shop</span></span>
-                </a>
-
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="#" class="active">Home</a></li>
-                        <li><a href="#categories">Categories</a></li>
-                        <li><a href="#products">Trending</a></li>
-                        <li><a href="#deals">Deals</a></li>
-                    </ul>
-                </nav>
-
-                <div class="search-wrap">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Search modern essentials...">
-                </div>
-
-                <div class="header-actions">
-                    <button class="icon-btn" aria-label="Wishlist">
-                        <i class="fa-regular fa-heart"></i>
-                    </button>
-                    <button class="icon-btn" aria-label="Cart">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <span class="cart-count">3</span>
-                    </button>
-                </div>
-            </div>
-        </div>
+        <nav>
+            <div class="logo">🏥 CarePlus Hospital</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#appointment">Book Appointment</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-banner">
-                <div class="hero-content">
-                    <span class="badge">Next-Gen Essentials</span>
-                    <h1>Designed for Better Everyday Living</h1>
-                    <p>Experience a carefully curated selection of modern lifestyle electronics, high-grade audio, and minimal home gear.</p>
-                    <div>
-                        <a href="#products" class="btn btn-primary">Shop Collection <i class="fa-solid fa-arrow-right"></i></a>
-                        <a href="#deals" class="btn btn-ghost">View Offers</a>
-                    </div>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Compassionate Care, Advanced Medicine</h1>
+        <p>Providing 24/7 world-class healthcare services with experienced specialists and modern technology.</p>
+        <a href="#appointment" class="btn">Book an Appointment</a>
+    </section>
+
+    <!-- Services Section -->
+    <section class="container" id="services">
+        <h2 class="section-title">Our Medical Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Emergency Care</h3>
+                <p>24/7 emergency response equipped with advanced life-support systems and trauma specialists.</p>
+            </div>
+            <div class="service-card">
+                <h3>Cardiology</h3>
+                <p>Comprehensive heart health evaluations, non-invasive testing, and specialized treatments.</p>
+            </div>
+            <div class="service-card">
+                <h3>Pediatrics</h3>
+                <p>Dedicated medical care, routine check-ups, and vaccinations for infants, children, and teens.</p>
+            </div>
+            <div class="service-card">
+                <h3>Neurology</h3>
+                <p>Expert diagnosis and treatment plans for complex neurological and brain disorders.</p>
             </div>
         </div>
     </section>
 
-    <section class="section" id="categories">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-title">
-                    <h2>Explore Categories</h2>
-                    <p>Find what you're looking for by browsing top collections</p>
+    <!-- Appointment Form Section -->
+    <section class="container" id="appointment">
+        <div class="appointment-section">
+            <h2 class="section-title">Schedule an Appointment</h2>
+            <form class="appointment-form" onsubmit="alert('Appointment request submitted!'); return false;">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required placeholder="John Doe">
                 </div>
-                <a href="#" class="view-all">View All <i class="fa-solid fa-chevron-right"></i></a>
-            </div>
-
-            <div class="categories-grid">
-                <div class="cat-card">
-                    <i class="fa-solid fa-laptop"></i>
-                    <h4>Electronics</h4>
-                    <span>120+ Items</span>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required placeholder="(123) 456-7890">
                 </div>
-                <div class="cat-card">
-                    <i class="fa-solid fa-headphones"></i>
-                    <h4>Audio</h4>
-                    <span>85+ Items</span>
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <select id="department" required>
+                        <option value="">Select Department</option>
+                        <option value="cardiology">Cardiology</option>
+                        <option value="pediatrics">Pediatrics</option>
+                        <option value="neurology">Neurology</option>
+                        <option value="general">General Medicine</option>
+                    </select>
                 </div>
-                <div class="cat-card">
-                    <i class="fa-solid fa-clock"></i>
-                    <h4>Wearables</h4>
-                    <span>60+ Items</span>
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" required>
                 </div>
-                <div class="cat-card">
-                    <i class="fa-solid fa-couch"></i>
-                    <h4>Home Decor</h4>
-                    <span>95+ Items</span>
-                </div>
-            </div>
+                <button type="submit" class="btn">Confirm Booking</button>
+            </form>
         </div>
     </section>
 
-    <section class="section" id="products">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-title">
-                    <h2>Trending Products</h2>
-                    <p>Our top-rated products based on customer reviews</p>
-                </div>
-                <a href="#" class="view-all">Browse Catalog <i class="fa-solid fa-chevron-right"></i></a>
-            </div>
-
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="img-wrap">
-                        <button class="wish-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
-                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Headphones">
-                    </div>
-                    <div class="body">
-                        <span class="category-tag">Audio</span>
-                        <h5>Studio Wireless Headphones</h5>
-                        <div class="rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                            <span>(4.8)</span>
-                        </div>
-                        <div class="price-row">
-                            <span class="price">$199.99</span>
-                            <span class="old-price">$249.99</span>
-                        </div>
-                        <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="img-wrap">
-                        <button class="wish-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
-                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Smart Watch">
-                    </div>
-                    <div class="body">
-                        <span class="category-tag">Wearables</span>
-                        <h5>Minimalist Smart Watch</h5>
-                        <div class="rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span>(5.0)</span>
-                        </div>
-                        <div class="price-row">
-                            <span class="price">$149.00</span>
-                        </div>
-                        <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="img-wrap">
-                        <button class="wish-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
-                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="Sneakers">
-                    </div>
-                    <div class="body">
-                        <span class="category-tag">Footwear</span>
-                        <h5>Pro Performance Sneakers</h5>
-                        <div class="rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <span>(4.2)</span>
-                        </div>
-                        <div class="price-row">
-                            <span class="price">$129.50</span>
-                        </div>
-                        <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="img-wrap">
-                        <button class="wish-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
-                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" alt="Leather Bag">
-                    </div>
-                    <div class="body">
-                        <span class="category-tag">Accessories</span>
-                        <h5>Handcrafted Leather Tote</h5>
-                        <div class="rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span>(4.9)</span>
-                        </div>
-                        <div class="price-row">
-                            <span class="price">$89.99</span>
-                        </div>
-                        <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <a href="#" class="brand" style="color: white; margin-bottom: 16px;">
-                        <i class="fa-solid fa-bolt-lightning"></i>
-                        <span>Nexus<span class="accent">Shop</span></span>
-                    </a>
-                    <p>Elevating daily lifestyle through clean, functional, and modern product collections.</p>
-                </div>
-                <div>
-                    <h5>Shop</h5>
-                    <ul>
-                        <li><a href="#">Electronics</a></li>
-                        <li><a href="#">Audio Gear</a></li>
-                        <li><a href="#">Wearables</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5>Support</h5>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Track Order</a></li>
-                        <li><a href="#">Returns & Exchanges</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5>Company</h5>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 NexusShop Inc. All rights reserved.</p>
-            </div>
-        </div>
+    <!-- Footer -->
+    <footer id="contact">
+        <p><strong>CarePlus Hospital</strong> | 123 Healthcare Blvd, Medical City</p>
+        <p>Emergency Line: (555) 019-2834 | Email: contact@careplus.org</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">&copy; 2026 CarePlus Health. All rights reserved.</p>
     </footer>
 
 </body>
