@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Care Plus Health Hospital</title>
+    <title>Care suchandar Plus Health Hospital</title>
     <style>
         /* Reset and Base Styles */
         * {
