@@ -612,7 +612,7 @@
                 <div style="color: var(--text-sub); font-size: 14px;">Next-Gen E-Commerce Interface</div>
             </div>
             <div class="copyright">
-                &copy; 2026 NEXUS PROTOCOL. All Rights Reserved.
+                &copy; 2027 NEXUS PROTOCOL. All Rights Reserved.
             </div>
         </div>
     </footer>
