@@ -3,156 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prime Video Clone</title>
+    <title>Finance Dashboard UI</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Amazon Ember', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --accent-blue: #3b82f6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
         }
 
         body {
-            background-color: #0f171e;
-            color: #ffffff;
-            overflow-x: hidden;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
         }
 
-        /* Top Header Navigation */
-        .navbar {
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 240px;
+            background-color: var(--card-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem 1.5rem;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 40px;
-            background-color: #1b2530;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 30px;
+            flex-direction: column;
+            gap: 2rem;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #00a8e1; /* Prime Blue */
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: #ffffff;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-
-        .nav-menu a {
-            color: #8197a4;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: color 0.2s;
-        }
-
-        .nav-menu a:hover, .nav-menu a.active {
-            color: #ffffff;
-        }
-
-        .search-bar input {
-            background-color: #25313d;
-            border: 1px solid #334454;
-            padding: 8px 16px;
-            border-radius: 4px;
-            color: #ffffff;
-            outline: none;
-            width: 220px;
-        }
-
-        /* Hero Banner */
-        .hero {
-            position: relative;
-            height: 70vh;
-            background: linear-gradient(to right, #0f171e 30%, transparent 80%),
-                        linear-gradient(to top, #0f171e 5%, transparent 30%),
-                        url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=80') center/cover;
-            display: flex;
-            align-items: center;
-            padding: 0 50px;
-        }
-
-        .hero-details {
-            max-width: 550px;
-        }
-
-        .prime-badge {
-            color: #00a8e1;
-            font-size: 0.85rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            line-height: 1.1;
-        }
-
-        .hero-meta {
-            color: #8197a4;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+            color: var(--accent-blue);
             display: flex;
-            gap: 15px;
             align-items: center;
+            gap: 0.5rem;
         }
 
-        .rating-tag {
-            border: 1px solid #8197a4;
-            padding: 1px 4px;
-            border-radius: 2px;
-            font-size: 0.75rem;
-        }
-
-        .hero-description {
-            color: #cccccc;
-            line-height: 1.5;
-            margin-bottom: 25px;
-            font-size: 0.95rem;
-        }
-
-        .hero-actions {
+        .nav-list {
+            list-style: none;
             display: flex;
-            gap: 15px;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
-        .btn-watch {
-            background-color: #00a8e1;
-            color: #ffffff;
+        .nav-item a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            display: block;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-item.active a, .nav-item a:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--accent-blue);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Metrics Cards */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .metric-title {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .text-green { color: var(--accent-green); }
+        .text-red { color: var(--accent-red); }
+
+        /* Dashboard Body Layout */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Form Controls */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group select {
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.75rem;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .btn {
+            background-color: var(--accent-blue);
+            color: white;
             border: none;
-            padding: 12px 28px;
-            font-weight: bold;
-            font-size: 1rem;
-            border-radius: 4px;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s;
+            width: 100%;
+            transition: opacity 0.2s;
         }
 
-        .btn-watch:hover {
-            background-color: #0082b0;
+        .btn:hover {
+            opacity: 0.9;
         }
 
-        /* Movie Grid / Slider */
-        .shelf {
-            padding: 25px 50px;
+        /* Transaction List */
+        .transaction-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 1rem;
         }
 
-        .shelf-title {
-            font-size
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background-color: var(--bg-dark);
+            border-radius: 6px;
+        }
+
+        @media (max-width: 900px) {
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+        }
