@@ -3,706 +3,497 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura Market — Modern Boutique Experience</title>
+    <title>Aura Market - Modern E-Commerce</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
                     colors: {
                         brand: {
                             50: '#eef2ff',
                             100: '#e0e7ff',
-                            200: '#c7d2fe',
-                            400: '#818cf8',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
-                            900: '#312e81',
-                        },
-                    },
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+                            500: '#4f46e5',
+                            600: '#4338ca',
+                            700: '#3730a3',
+                        }
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts & Lucide Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        /* Glassmorphism effects */
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        /* Subtle scrollbars */
-        ::-webkit-scrollbar {
+        .custom-scroll::-webkit-scrollbar {
             width: 6px;
             height: 6px;
         }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
+        .custom-scroll::-webkit-scrollbar-track {
+            background: transparent;
         }
-        ::-webkit-scrollbar-thumb {
+        .custom-scroll::-webkit-scrollbar-thumb {
             background: #cbd5e1;
-            border-radius: 9999px;
+            border-radius: 4px;
         }
-        ::-webkit-scrollbar-thumb:hover {
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
             background: #94a3b8;
-        }
-
-        /* Toast animation */
-        @keyframes toastSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-        .toast-animate {
-            animation: toastSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+<body class="bg-slate-50 text-slate-900 font-sans min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-white">
 
     <!-- Top Announcement Bar -->
     <div class="bg-slate-900 text-slate-200 text-xs py-2 px-4 text-center tracking-wide font-medium flex items-center justify-center gap-2">
         <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>Spring Flash Sale: Use code <span class="text-white font-bold bg-slate-800 px-1.5 py-0.5 rounded border border-slate-700">AURA20</span> for 20% off all orders</span>
+        Summer Drop is Live! Get 20% off with code <strong class="text-white underline decoration-brand-500 underline-offset-2">AURA20</strong>
     </div>
 
-    <!-- Sticky Header -->
-    <header class="sticky top-0 z-40 glass-nav border-b border-slate-200/80 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-            
-            <!-- Brand Logo -->
-            <div class="flex items-center gap-8">
-                <a href="#" class="flex items-center gap-2 group">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-400 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform duration-200">
-                        <i data-lucide="sparkles" class="w-5 h-5"></i>
-                    </div>
-                    <div>
-                        <span class="text-xl font-extrabold tracking-tight text-slate-900 flex items-center gap-0.5">
-                            AURA<span class="text-brand-600">.</span>
-                        </span>
-                        <span class="block text-[10px] uppercase font-semibold text-slate-400 tracking-wider -mt-1">Concept Studio</span>
-                    </div>
-                </a>
-            </div>
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4 py-3.5">
+            <!-- Brand -->
+            <a href="#" class="flex items-center gap-2.5 text-2xl font-extrabold tracking-tight text-slate-900 group">
+                <span class="w-10 h-10 rounded-xl bg-brand-500 text-white flex items-center justify-center shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform">
+                    ✦
+                </span>
+                <span>Aura<span class="text-brand-500">.</span></span>
+            </a>
 
-            <!-- Global Live Search (Desktop) -->
-            <div class="hidden md:flex flex-1 max-w-md mx-6">
-                <div class="relative w-full">
-                    <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
-                    <input 
-                        type="text" 
-                        id="searchInput"
-                        placeholder="Search gadgets, lifestyle, apparel..." 
-                        class="w-full bg-slate-100/80 hover:bg-slate-100 focus:bg-white text-slate-800 text-sm pl-10 pr-9 py-2.5 rounded-full border border-slate-200/80 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 transition-all"
-                    >
-                    <button id="clearSearchBtn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
-                        <i data-lucide="x" class="w-4 h-4"></i>
-                    </button>
+            <!-- Search Bar (Accessibility Fixed: Associated Label + aria-label) -->
+            <div class="hidden sm:flex flex-1 max-w-md mx-6 relative">
+                <label for="searchInput" class="sr-only">Search products, categories, or styles</label>
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
                 </div>
+                <input
+                    type="text"
+                    id="searchInput"
+                    name="search"
+                    aria-label="Search products, categories, or styles"
+                    placeholder="Search gadgets, lifestyle, apparel..."
+                    class="w-full bg-slate-100/80 hover:bg-slate-100 focus:bg-white text-slate-800 text-sm pl-10 pr-9 py-2.5 rounded-full border border-slate-200/80 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 transition-all"
+                    oninput="handleSearch(this.value)"
+                />
+                <button
+                    type="button"
+                    id="clearSearch"
+                    aria-label="Clear search text"
+                    title="Clear search"
+                    onclick="clearSearchInput()"
+                    class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 transition-colors"
+                >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
             </div>
 
-            <!-- Header Action Icons -->
-            <div class="flex items-center gap-2 sm:gap-3">
-                <!-- Wishlist Trigger -->
-                <button id="wishlistHeaderBtn" class="relative p-2.5 rounded-full text-slate-600 hover:text-brand-600 hover:bg-brand-50 transition-colors">
-                    <i data-lucide="heart" class="w-5 h-5"></i>
-                    <span id="wishlistCount" class="absolute top-1 right-1 bg-rose-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center opacity-0 scale-50 transition-all duration-200">0</span>
-                </button>
-
+            <!-- Action buttons -->
+            <div class="flex items-center gap-2">
                 <!-- Cart Button -->
                 <button 
                     id="cartBtn" 
-                    class="relative flex items-center gap-2.5 bg-brand-600 hover:bg-brand-700 text-white pl-3.5 pr-4 py-2.5 rounded-full shadow-md shadow-brand-600/25 active:scale-95 transition-all text-sm font-semibold"
+                    type="button"
+                    aria-label="View shopping cart" 
+                    title="Open Cart" 
+                    class="relative p-2.5 rounded-full hover:bg-slate-100 active:scale-95 transition-all text-slate-700"
                 >
-                    <div class="relative">
-                        <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-                        <span id="cartCountBadge" class="absolute -top-2 -right-2 bg-amber-400 text-slate-900 text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center">0</span>
-                    </div>
-                    <span class="hidden sm:inline" id="headerCartTotal">$0.00</span>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                    </svg>
+                    <span id="cartCount" class="absolute -top-1 -right-1 bg-brand-500 text-white font-bold text-xs min-w-[20px] h-5 px-1.5 rounded-full flex items-center justify-center shadow-md scale-100 transition-transform">0</span>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Search Bar (Collapsible/Always visible on small screens) -->
-        <div class="px-4 pb-3 md:hidden">
-            <div class="relative w-full">
-                <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+        <!-- Mobile Search (Fixed accessibility) -->
+        <div class="sm:hidden px-4 pb-3">
+            <label for="mobileSearchInput" class="sr-only">Search products</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
                 <input 
                     type="text" 
                     id="mobileSearchInput"
-                    placeholder="Search curated products..." 
-                    class="w-full bg-slate-100 text-slate-800 text-sm pl-10 pr-9 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-500"
-                >
+                    name="mobile-search"
+                    aria-label="Search products"
+                    placeholder="Search catalog..." 
+                    class="w-full bg-slate-100 text-slate-800 text-sm pl-9 pr-4 py-2 rounded-full border border-slate-200 focus:outline-none focus:border-brand-500 focus:bg-white"
+                    oninput="handleSearch(this.value)"
+                />
             </div>
         </div>
     </header>
 
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
-        
-        <!-- Hero Tagline -->
-        <div class="mb-8">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-                <div>
-                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 text-brand-700 mb-2">
-                        <i data-lucide="award" class="w-3.5 h-3.5"></i> Curated 2026 Collection
-                    </div>
-                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Design-forward essentials.</h1>
-                    <p class="text-slate-500 text-sm sm:text-base mt-1">High-quality lifestyle accessories, audio gear, and timeless daily items.</p>
-                </div>
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+        <!-- Hero Banner -->
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white p-8 sm:p-12 mb-10 shadow-2xl">
+            <div class="relative z-10 max-w-xl">
+                <span class="inline-block text-xs font-semibold uppercase tracking-wider text-brand-500 bg-brand-500/10 px-3 py-1 rounded-full mb-3 border border-brand-500/20">Essential Curations</span>
+                <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 leading-tight">Elevate your workspace & daily lifestyle.</h1>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">Designed with obsessive precision. Minimal aesthetic, optimal performance, sustainable craftsmanship.</p>
+                <a href="#productGrid" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold text-sm px-6 py-3 rounded-full transition-all shadow-lg shadow-brand-500/30">
+                    Explore Collection
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </div>
+            <!-- Decorative circle -->
+            <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        </div>
 
-                <!-- Active Results Summary -->
-                <div class="text-xs sm:text-sm text-slate-500 font-medium">
-                    Showing <span id="resultsCount" class="font-bold text-slate-900">0</span> items
-                </div>
+        <!-- Controls: Filters & Sorting (Fixed Select Label accessibility) -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+            <!-- Filter Pills -->
+            <div class="flex flex-wrap gap-2" id="filterContainer">
+                <button type="button" class="filter-btn active px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-brand-500 text-white shadow-sm" onclick="filterProducts('all', this)">All Items</button>
+                <button type="button" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white text-slate-600 border border-slate-200 hover:border-slate-300" onclick="filterProducts('electronics', this)">Electronics</button>
+                <button type="button" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white text-slate-600 border border-slate-200 hover:border-slate-300" onclick="filterProducts('lifestyle', this)">Lifestyle</button>
+                <button type="button" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white text-slate-600 border border-slate-200 hover:border-slate-300" onclick="filterProducts('apparel', this)">Apparel</button>
+            </div>
+
+            <!-- Sort By Select with Accessible Label -->
+            <div class="flex items-center gap-2 self-end sm:self-auto">
+                <label for="sortSelect" class="text-xs font-semibold text-slate-500 uppercase tracking-wider whitespace-nowrap">Sort By:</label>
+                <select 
+                    id="sortSelect" 
+                    name="sort"
+                    aria-label="Sort products by" 
+                    onchange="handleSort(this.value)" 
+                    class="bg-white border border-slate-200 text-slate-700 text-sm font-medium rounded-xl px-3 py-2 pr-8 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 cursor-pointer shadow-sm"
+                >
+                    <option value="default">Featured</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="name">Alphabetical</option>
+                </select>
             </div>
         </div>
 
-        <!-- Filter & Sorting Controls -->
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
-            <!-- Category Pills -->
-            <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
-                <button class="filter-pill active px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap bg-slate-900 text-white shadow-sm transition-all" data-category="all">
-                    All Categories
-                </button>
-                <button class="filter-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 transition-all" data-category="electronics">
-                    Electronics
-                </button>
-                <button class="filter-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 transition-all" data-category="lifestyle">
-                    Lifestyle
-                </button>
-                <button class="filter-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 transition-all" data-category="apparel">
-                    Apparel
-                </button>
-                <button class="filter-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 transition-all" data-category="favorites">
-                    Saved ❤️
-                </button>
-            </div>
-
-            <!-- Sort By Dropdown -->
-            <div class="flex items-center justify-end gap-2.5">
-                <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Sort by:</span>
-                <div class="relative">
-                    <select id="sortSelect" class="appearance-none bg-white text-slate-700 text-xs sm:text-sm font-medium pl-3 pr-8 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500/20 cursor-pointer">
-                        <option value="featured">Featured First</option>
-                        <option value="price-low">Price: Low to High</option>
-                        <option value="price-high">Price: High to Low</option>
-                        <option value="rating">Top Rated</option>
-                    </select>
-                    <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
-                </div>
-            </div>
+        <!-- Catalog Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="productGrid">
+            <!-- Dynamic Cards Loaded via JS -->
         </div>
 
-        <!-- Product Grid -->
-        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7 mt-8">
-            <!-- Dynamic Content loaded via JS -->
-        </div>
-
-        <!-- Empty State UI -->
-        <div id="emptyState" class="hidden text-center py-20 px-4">
-            <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i data-lucide="search-x" class="w-8 h-8"></i>
-            </div>
-            <h3 class="text-lg font-bold text-slate-800">No matching products found</h3>
-            <p class="text-sm text-slate-500 mt-1 max-w-sm mx-auto">Try clearing your search terms or selecting another category filter.</p>
-            <button id="resetFiltersBtn" class="mt-4 px-4 py-2 text-xs font-semibold text-brand-600 bg-brand-50 hover:bg-brand-100 rounded-lg transition-colors">
-                Reset filters
-            </button>
+        <!-- Empty Results Placeholder -->
+        <div id="noResults" class="hidden text-center py-20">
+            <div class="w-16 h-16 mx-auto bg-slate-100 rounded-full flex items-center justify-center text-slate-400 mb-4 text-2xl">🔍</div>
+            <h3 class="text-lg font-bold text-slate-800 mb-1">No products found</h3>
+            <p class="text-slate-500 text-sm max-w-sm mx-auto mb-4">Try checking your spelling or selecting another category.</p>
+            <button type="button" onclick="resetFilters()" class="text-brand-500 hover:text-brand-600 font-semibold text-sm">Reset Filters</button>
         </div>
     </main>
 
-    <!-- Drawer Backdrop -->
-    <div id="drawerOverlay" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
-
-    <!-- Slide-Over Shopping Cart Drawer -->
-    <aside id="cartDrawer" class="fixed top-0 right-0 h-full w-full sm:w-[420px] bg-white z-50 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out">
-        <!-- Header -->
-        <div class="px-6 py-5 border-b border-slate-200 flex items-center justify-between bg-white">
+    <!-- Cart Overlay & Slide Drawer -->
+    <div id="cartBackdrop" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleCart(false)"></div>
+    <div id="cartDrawer" class="fixed top-0 right-0 h-full w-full sm:w-[420px] bg-white z-50 shadow-2xl flex flex-col translate-x-full transition-transform duration-300 ease-out" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+        <!-- Drawer Header -->
+        <div class="p-5 border-b border-slate-100 flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <i data-lucide="shopping-bag" class="w-5 h-5 text-brand-600"></i>
-                <h3 class="font-bold text-lg text-slate-900">Your Bag</h3>
-                <span id="drawerItemCountBadge" class="bg-brand-100 text-brand-700 text-xs px-2 py-0.5 rounded-full font-semibold">0 items</span>
+                <h2 id="cartTitle" class="text-lg font-bold text-slate-900">Your Cart</h2>
+                <span id="cartDrawerBadge" class="bg-slate-100 text-slate-600 text-xs font-semibold px-2 py-0.5 rounded-full">0 items</span>
             </div>
-            <button id="closeCartBtn" class="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors">
-                <i data-lucide="x" class="w-5 h-5"></i>
+            <button 
+                type="button" 
+                id="closeCart" 
+                aria-label="Close cart drawer" 
+                title="Close Cart"
+                class="p-2 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+                onclick="toggleCart(false)"
+            >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
         </div>
 
-        <!-- Free Shipping Progress Tracker -->
-        <div class="bg-indigo-50/60 px-6 py-3.5 border-b border-indigo-100/60">
-            <div class="flex justify-between items-center text-xs mb-1.5 font-medium">
-                <span id="shippingGoalText" class="text-indigo-900">Add $50.00 for FREE Express Shipping</span>
-                <span id="shippingPercent" class="font-bold text-brand-700">0%</span>
+        <!-- Free shipping progress bar -->
+        <div class="bg-brand-50/70 p-4 border-b border-brand-100/50">
+            <div class="flex justify-between items-center text-xs font-medium mb-1.5 text-slate-700">
+                <span id="shippingProgressText">Add items to unlock free shipping</span>
+                <span id="shippingGoal" class="font-bold text-brand-600">$150.00 Goal</span>
             </div>
-            <div class="w-full h-2 bg-indigo-100 rounded-full overflow-hidden">
-                <div id="shippingProgressBar" class="h-full bg-brand-600 transition-all duration-300" style="width: 0%;"></div>
+            <div class="w-full bg-slate-200/80 rounded-full h-1.5 overflow-hidden">
+                <div id="shippingProgressBar" class="bg-brand-500 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
             </div>
         </div>
 
-        <!-- Cart Items Scrollable List -->
-        <div id="cartItemsList" class="flex-1 overflow-y-auto px-6 py-4 divide-y divide-slate-100">
+        <!-- Cart Items List -->
+        <div class="flex-1 overflow-y-auto p-5 space-y-4 custom-scroll" id="cartItems">
             <!-- Dynamic Cart Items injected here -->
         </div>
 
-        <!-- Footer / Checkout Section -->
-        <div class="border-t border-slate-200 p-6 bg-slate-50 space-y-4">
-            <!-- Promo Code Input -->
+        <!-- Drawer Footer -->
+        <div class="p-5 border-t border-slate-100 bg-slate-50/60 space-y-3">
+            <!-- Promo code input (Fixed input accessibility) -->
             <div class="flex gap-2">
-                <div class="relative flex-1">
-                    <input 
-                        type="text" 
-                        id="couponInput"
-                        placeholder="Discount code (e.g. AURA20)" 
-                        class="w-full text-xs uppercase bg-white border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-brand-500 font-medium"
-                    >
-                </div>
-                <button id="applyCouponBtn" class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-colors">
-                    Apply
-                </button>
+                <label for="promoCodeInput" class="sr-only">Discount or Promo Code</label>
+                <input 
+                    type="text" 
+                    id="promoCodeInput" 
+                    name="promo"
+                    aria-label="Enter promo code"
+                    placeholder="Enter promo code (AURA20)" 
+                    class="flex-1 bg-white border border-slate-200 text-xs px-3 py-2 rounded-xl uppercase tracking-wider font-medium focus:outline-none focus:border-brand-500"
+                />
+                <button type="button" onclick="applyPromo()" class="bg-slate-900 text-white text-xs font-semibold px-4 py-2 rounded-xl hover:bg-slate-800 transition-colors">Apply</button>
             </div>
-            <div id="couponMessage" class="hidden text-xs font-medium"></div>
 
-            <!-- Pricing Summary Breakdown -->
-            <div class="space-y-1.5 text-xs text-slate-600">
-                <div class="flex justify-between">
+            <!-- Pricing Breakdown -->
+            <div class="space-y-1.5 pt-2 text-sm">
+                <div class="flex justify-between text-slate-500">
                     <span>Subtotal</span>
-                    <span id="cartSubtotal" class="font-semibold text-slate-800">$0.00</span>
+                    <span id="cartSubtotal" class="font-medium text-slate-800">$0.00</span>
                 </div>
                 <div id="discountRow" class="hidden flex justify-between text-emerald-600">
                     <span>Discount (20%)</span>
-                    <span id="cartDiscount" class="font-semibold">-$0.00</span>
+                    <span id="cartDiscount" class="font-medium">-$0.00</span>
                 </div>
-                <div class="flex justify-between">
-                    <span>Shipping</span>
-                    <span id="cartShipping" class="font-semibold text-slate-800">$0.00</span>
+                <div class="flex justify-between text-slate-500">
+                    <span>Estimated Shipping</span>
+                    <span id="cartShipping" class="font-medium text-slate-800">$0.00</span>
                 </div>
-                <div class="pt-2 border-t border-slate-200 flex justify-between text-base font-bold text-slate-900">
+                <div class="flex justify-between text-base font-bold text-slate-900 pt-2 border-t border-slate-200">
                     <span>Total</span>
-                    <span id="cartGrandTotal">$0.00</span>
+                    <span id="cartTotal">$0.00</span>
                 </div>
             </div>
 
-            <!-- Checkout CTA Button -->
-            <button 
-                id="checkoutBtn" 
-                class="w-full bg-brand-600 hover:bg-brand-700 text-white py-3.5 px-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-brand-600/20 active:scale-[0.99] transition-all"
-            >
-                <span>Checkout Now</span>
-                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            <button type="button" onclick="handleCheckout()" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-semibold py-3.5 rounded-xl shadow-lg shadow-brand-500/25 transition-all active:scale-[0.99] flex items-center justify-center gap-2">
+                <span>Proceed to Checkout</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </button>
-        </div>
-    </aside>
-
-    <div id="quickViewModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-200">
-        <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl transform scale-95 transition-all duration-200 relative">
-            <button id="closeQuickViewBtn" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/90 backdrop-blur shadow-md flex items-center justify-center text-slate-500 hover:text-slate-900">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-            <div class="grid grid-cols-1 md:grid-cols-2">
-                <div class="h-64 md:h-full bg-slate-100 relative">
-                    <img id="modalImg" src="" alt="" class="w-full h-full object-cover">
-                    <span id="modalBadge" class="absolute top-4 left-4 text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-brand-600 text-white shadow">
-                        Popular
-                    </span>
-                </div>
-                <div class="p-6 md:p-8 flex flex-col justify-between">
-                    <div>
-                        <span id="modalCategory" class="text-xs uppercase tracking-wider font-semibold text-brand-600">Category</span>
-                        <h2 id="modalTitle" class="text-xl font-bold text-slate-900 mt-1">Product Title</h2>
-                        
-                        <div class="flex items-center gap-2 mt-2">
-                            <div class="flex items-center text-amber-400">
-                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-                                <span id="modalRating" class="text-xs font-bold text-slate-700 ml-1">4.9</span>
-                            </div>
-                            <span class="text-slate-300">·</span>
-                            <span id="modalReviews" class="text-xs text-slate-500 font-medium">124 reviews</span>
-                            <span class="text-slate-300">·</span>
-                            <span class="text-xs font-semibold text-emerald-600 flex items-center gap-1">
-                                <i data-lucide="check" class="w-3 h-3"></i> In Stock
-                            </span>
-                        </div>
-
-                        <p id="modalDescription" class="text-slate-600 text-sm mt-4 leading-relaxed">
-                            Crafted for refined daily use with carefully chosen materials, built to elevate productivity and personal comfort.
-                        </p>
-                    </div>
-
-                    <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                        <div>
-                            <span class="text-xs text-slate-400 block font-medium">Price</span>
-                            <span id="modalPrice" class="text-2xl font-black text-slate-900">$0.00</span>
-                        </div>
-                        <button id="modalAddToCartBtn" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-xl flex items-center gap-2 shadow-md shadow-brand-600/20 active:scale-95 transition-all text-sm">
-                            <i data-lucide="shopping-cart" class="w-4 h-4"></i> Add to Bag
-                        </button>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
-    <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2.5 pointer-events-none"></div>
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white text-sm font-medium px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span id="toastMsg">Added to bag</span>
+    </div>
 
+    <!-- JavaScript Application Logic -->
     <script>
-        // Catalog dataset enriched with badges, ratings, and descriptions
         const products = [
-            {
-                id: 1,
-                title: 'Aura Studio Wireless ANC',
-                category: 'electronics',
-                price: 129.99,
-                rating: 4.9,
-                reviews: 240,
-                badge: 'Best Seller',
-                description: 'Custom acoustic architecture with active noise cancellation and 40-hour continuous playback battery.',
-                image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=650&q=80'
-            },
-            {
-                id: 2,
-                title: 'Nordic Horizon Minimal Watch',
-                category: 'lifestyle',
-                price: 89.00,
-                rating: 4.8,
-                reviews: 95,
-                badge: 'New',
-                description: 'Brushed stainless steel bezel, sapphire crystal face, and genuine vegetable-tanned leather strap.',
-                image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=650&q=80'
-            },
-            {
-                id: 3,
-                title: 'Lumio Ergonomic Desk Lamp',
-                category: 'lifestyle',
-                price: 45.50,
-                rating: 4.6,
-                reviews: 80,
-                badge: 'Popular',
-                description: 'Warm ambient LED lightbar with touch dimmer, integrated Qi fast wireless charger, and flexible neck.',
-                image: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=650&q=80'
-            },
-            {
-                id: 4,
-                title: 'Heavyweight Loopback Hoodie',
-                category: 'apparel',
-                price: 59.99,
-                rating: 4.7,
-                reviews: 160,
-                badge: 'Sale',
-                description: 'Pre-shrunk 460GSM French terry cotton with relaxed dropped shoulders and double-lined hood.',
-                image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=650&q=80'
-            },
-            {
-                id: 5,
-                title: 'Keychron Linear Mechanical',
-                category: 'electronics',
-                price: 109.00,
-                rating: 4.9,
-                reviews: 310,
-                badge: 'Top Rated',
-                description: 'Hot-swappable tactile switches, frosted PBT keycaps, sound dampening foam, and multi-device Bluetooth.',
-                image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=650&q=80'
-            },
-            {
-                id: 6,
-                title: 'Voyager Heritage Leather Bag',
-                category: 'apparel',
-                price: 140.00,
-                rating: 4.8,
-                reviews: 114,
-                badge: 'Handcrafted',
-                description: 'Water-resistant waxed canvas and full-grain leather pack with padded 16-inch laptop compartment.',
-                image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=650&q=80'
-            },
-            {
-                id: 7,
-                title: 'Aura Pods Pro Spatial Sound',
-                category: 'electronics',
-                price: 79.99,
-                rating: 4.7,
-                reviews: 145,
-                badge: 'Sale',
-                description: 'Ultra-compact earbuds with transparency mode, silicone contoured tips, and IPX5 moisture resistance.',
-                image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=650&q=80'
-            },
-            {
-                id: 8,
-                title: 'Artisan Ceramic Tumbler 380ml',
-                category: 'lifestyle',
-                price: 28.00,
-                rating: 4.9,
-                reviews: 62,
-                badge: 'Eco',
-                description: 'Double-walled thermal ceramic tumbler with leakproof bamboo twist cap, preserves heat up to 8 hours.',
-                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=650&q=80'
-            }
+            { id: 1, title: 'Wireless Active Headphones', category: 'electronics', price: 129.99, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80', badge: 'Best Seller' },
+            { id: 2, title: 'Minimalist Chrono Watch', category: 'lifestyle', price: 89.00, image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80', badge: 'Trending' },
+            { id: 3, title: 'Ergonomic Studio Lamp', category: 'lifestyle', price: 45.50, image: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=600&q=80' },
+            { id: 4, title: 'Heavyweight Cotton Hoodie', category: 'apparel', price: 59.99, image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80', badge: 'New' },
+            { id: 5, title: 'Mechanical Tactile Keyboard', category: 'electronics', price: 109.00, image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80' },
+            { id: 6, title: 'Heritage Leather Backpack', category: 'apparel', price: 140.00, image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80' }
         ];
 
-        // App state
         let cart = [];
-        let wishlist = new Set();
-        let activeCategory = 'all';
+        let currentCategory = 'all';
         let searchQuery = '';
-        let sortBy = 'featured';
+        let sortOption = 'default';
         let discountPercent = 0;
-        const FREE_SHIPPING_THRESHOLD = 150;
+        const FREE_SHIPPING_THRESHOLD = 150.00;
 
         // DOM Elements
         const productGrid = document.getElementById('productGrid');
-        const emptyState = document.getElementById('emptyState');
-        const resultsCount = document.getElementById('resultsCount');
-        const searchInput = document.getElementById('searchInput');
-        const mobileSearchInput = document.getElementById('mobileSearchInput');
-        const clearSearchBtn = document.getElementById('clearSearchBtn');
-        const sortSelect = document.getElementById('sortSelect');
+        const noResults = document.getElementById('noResults');
         const cartDrawer = document.getElementById('cartDrawer');
-        const drawerOverlay = document.getElementById('drawerOverlay');
+        const cartBackdrop = document.getElementById('cartBackdrop');
         const cartBtn = document.getElementById('cartBtn');
-        const closeCartBtn = document.getElementById('closeCartBtn');
-        const cartItemsList = document.getElementById('cartItemsList');
-        const cartCountBadge = document.getElementById('cartCountBadge');
-        const headerCartTotal = document.getElementById('headerCartTotal');
-        const drawerItemCountBadge = document.getElementById('drawerItemCountBadge');
+        const cartCount = document.getElementById('cartCount');
+        const cartDrawerBadge = document.getElementById('cartDrawerBadge');
+        const cartItems = document.getElementById('cartItems');
         const cartSubtotal = document.getElementById('cartSubtotal');
         const cartDiscount = document.getElementById('cartDiscount');
         const discountRow = document.getElementById('discountRow');
         const cartShipping = document.getElementById('cartShipping');
-        const cartGrandTotal = document.getElementById('cartGrandTotal');
+        const cartTotal = document.getElementById('cartTotal');
         const shippingProgressBar = document.getElementById('shippingProgressBar');
-        const shippingGoalText = document.getElementById('shippingGoalText');
-        const shippingPercent = document.getElementById('shippingPercent');
-        const couponInput = document.getElementById('couponInput');
-        const applyCouponBtn = document.getElementById('applyCouponBtn');
-        const couponMessage = document.getElementById('couponMessage');
-        const toastContainer = document.getElementById('toastContainer');
-        const wishlistCount = document.getElementById('wishlistCount');
-        const quickViewModal = document.getElementById('quickViewModal');
-        const closeQuickViewBtn = document.getElementById('closeQuickViewBtn');
-        const modalAddToCartBtn = document.getElementById('modalAddToCartBtn');
-        let currentModalProductId = null;
+        const shippingProgressText = document.getElementById('shippingProgressText');
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toastMsg');
+        const searchInput = document.getElementById('searchInput');
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        const clearSearchBtn = document.getElementById('clearSearch');
 
-        function getFilteredAndSortedProducts() {
-            return products.filter(product => {
-                const matchesCategory = 
-                    activeCategory === 'all' ? true :
-                    activeCategory === 'favorites' ? wishlist.has(product.id) :
-                    product.category === activeCategory;
-
-                const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                                      product.category.toLowerCase().includes(searchQuery.toLowerCase());
-                return matchesCategory && matchesSearch;
-            }).sort((a, b) => {
-                if (sortBy === 'price-low') return a.price - b.price;
-                if (sortBy === 'price-high') return b.price - a.price;
-                if (sortBy === 'rating') return b.rating - a.rating;
-                return a.id - b.id; // default
-            });
+        // Render Catalog Grid
+        function getFilteredProducts() {
+            return products
+                .filter(p => currentCategory === 'all' || p.category === currentCategory)
+                .filter(p => p.title.toLowerCase().includes(searchQuery.toLowerCase()))
+                .sort((a, b) => {
+                    if (sortOption === 'price-low') return a.price - b.price;
+                    if (sortOption === 'price-high') return b.price - a.price;
+                    if (sortOption === 'name') return a.title.localeCompare(b.title);
+                    return a.id - b.id;
+                });
         }
 
         function renderProducts() {
-            const items = getFilteredAndSortedProducts();
-            resultsCount.textContent = items.length;
-
-            if (items.length === 0) {
+            const list = getFilteredProducts();
+            if (list.length === 0) {
                 productGrid.innerHTML = '';
-                emptyState.classList.remove('hidden');
+                noResults.classList.remove('hidden');
                 return;
             }
 
-            emptyState.classList.add('hidden');
-            productGrid.innerHTML = items.map(product => {
-                const isSaved = wishlist.has(product.id);
-                return `
-                    <div class="group bg-white rounded-2xl border border-slate-200/90 overflow-hidden hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200/60 transition-all duration-300 flex flex-col relative">
-                        <!-- Product Image Box -->
-                        <div class="relative w-full aspect-square bg-slate-100 overflow-hidden cursor-pointer" onclick="openQuickView(${product.id})">
-                            <img 
-                                src="${product.image}" 
-                                alt="${product.title}" 
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                                loading="lazy"
-                            >
-                            <!-- Badge -->
-                            <div class="absolute top-3 left-3 flex flex-col gap-1">
-                                <span class="bg-white/95 backdrop-blur text-slate-800 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
-                                    ${product.badge}
-                                </span>
-                            </div>
+            noResults.classList.add('hidden');
+            productGrid.innerHTML = list.map(item => `
+                <div class="group bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col">
+                    <!-- Image Wrapper -->
+                    <div class="relative overflow-hidden bg-slate-100 aspect-square">
+                        <img 
+                            src="${item.image}" 
+                            alt="${item.title}" 
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                            loading="lazy"
+                        />
+                        ${item.badge ? `
+                            <span class="absolute top-3 left-3 bg-slate-900/90 backdrop-blur text-white text-[11px] font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                                ${item.badge}
+                            </span>
+                        ` : ''}
+                    </div>
 
-                            <!-- Wishlist Button -->
-                            <button 
-                                onclick="event.stopPropagation(); toggleWishlist(${product.id})"
-                                class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur shadow-sm hover:scale-110 flex items-center justify-center transition-all ${isSaved ? 'text-rose-500' : 'text-slate-400 hover:text-slate-700'}"
-                                aria-label="Save to favorites"
-                            >
-                                <i data-lucide="heart" class="w-4 h-4 ${isSaved ? 'fill-rose-500' : ''}"></i>
-                            </button>
-
-                            <!-- Quick View Overlay hint -->
-                            <div class="absolute inset-x-0 bottom-0 py-2.5 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-semibold gap-1">
-                                <i data-lucide="eye" class="w-3.5 h-3.5"></i> Quick View
-                            </div>
+                    <!-- Details -->
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5 block">${item.category}</span>
+                            <h3 class="text-base font-bold text-slate-800 group-hover:text-brand-500 transition-colors line-clamp-1">${item.title}</h3>
                         </div>
 
-                        <!-- Product Details -->
-                        <div class="p-5 flex flex-col flex-1 justify-between">
+                        <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
                             <div>
-                                <div class="flex items-center justify-between text-xs text-slate-400 font-medium mb-1.5">
-                                    <span class="uppercase tracking-wider font-semibold text-brand-600">${product.category}</span>
-                                    <div class="flex items-center gap-1 text-amber-500">
-                                        <i data-lucide="star" class="w-3 h-3 fill-amber-400 text-amber-400"></i>
-                                        <span class="font-bold text-slate-700">${product.rating}</span>
-                                        <span class="text-slate-400 text-[11px]">(${product.reviews})</span>
-                                    </div>
-                                </div>
-                                <h3 class="text-sm sm:text-base font-bold text-slate-900 line-clamp-1 hover:text-brand-600 cursor-pointer transition-colors" onclick="openQuickView(${product.id})">
-                                    ${product.title}
-                                </h3>
-                                <p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                                    ${product.description}
-                                </p>
+                                <span class="text-xs text-slate-400 block">Price</span>
+                                <span class="text-lg font-extrabold text-slate-900">$${item.price.toFixed(2)}</span>
                             </div>
-
-                            <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
-                                <span class="text-lg font-black text-slate-900">
-                                    $${product.price.toFixed(2)}
-                                </span>
-                                <button 
-                                    onclick="addToCart(${product.id})"
-                                    class="bg-slate-900 hover:bg-brand-600 text-white text-xs font-semibold px-3.5 py-2.5 rounded-xl flex items-center gap-1.5 active:scale-95 transition-all shadow-sm"
-                                >
-                                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add
-                                </button>
-                            </div>
+                            <button 
+                                type="button"
+                                aria-label="Add ${item.title} to Cart" 
+                                onclick="addToCart(${item.id})"
+                                class="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-brand-500 active:scale-95 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-all shadow-sm"
+                            >
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                                Add
+                            </button>
                         </div>
                     </div>
-                `;
-            }).join('');
-
-            lucide.createIcons();
+                </div>
+            `).join('');
         }
 
-        function toggleWishlist(productId) {
-            const product = products.find(p => p.id === productId);
-            if (wishlist.has(productId)) {
-                wishlist.delete(productId);
-                showToast(`Removed "${product.title}" from wishlist`, 'info');
+        // Cart Drawer Operations
+        function toggleCart(open) {
+            if (open) {
+                cartDrawer.classList.remove('translate-x-full');
+                cartBackdrop.classList.remove('opacity-0', 'pointer-events-none');
             } else {
-                wishlist.add(productId);
-                showToast(`Saved "${product.title}" to wishlist ❤️`, 'success');
-            }
-            updateWishlistBadge();
-            renderProducts();
-        }
-
-        function updateWishlistBadge() {
-            wishlistCount.textContent = wishlist.size;
-            if (wishlist.size > 0) {
-                wishlistCount.classList.remove('opacity-0', 'scale-50');
-            } else {
-                wishlistCount.classList.add('opacity-0', 'scale-50');
+                cartDrawer.classList.add('translate-x-full');
+                cartBackdrop.classList.add('opacity-0', 'pointer-events-none');
             }
         }
 
-        function showToast(message, type = 'success') {
-            const toast = document.createElement('div');
-            const bgClass = type === 'success' ? 'bg-slate-900 text-white' : 'bg-slate-800 text-slate-200';
-            const icon = type === 'success' ? 'check-circle' : 'info';
-            
-            toast.className = `${bgClass} text-xs font-semibold px-4 py-3 rounded-2xl shadow-xl border border-slate-700/50 flex items-center gap-2.5 toast-animate pointer-events-auto`;
-            toast.innerHTML = `
-                <i data-lucide="${icon}" class="w-4 h-4 text-emerald-400"></i>
-                <span>${message}</span>
-            `;
-            toastContainer.appendChild(toast);
-            lucide.createIcons();
+        cartBtn.addEventListener('click', () => toggleCart(true));
 
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transform = 'translateY(10px) scale(0.95)';
-                toast.style.transition = 'all 0.25s ease';
-                setTimeout(() => toast.remove(), 250);
-            }, 2600);
-        }
-
-        function addToCart(productId, quantity = 1) {
+        function addToCart(productId) {
             const product = products.find(p => p.id === productId);
-            const existing = cart.find(item => item.id === productId);
+            const found = cart.find(item => item.id === productId);
 
-            if (existing) {
-                existing.quantity += quantity;
+            if (found) {
+                found.quantity += 1;
             } else {
-                cart.push({ ...product, quantity });
+                cart.push({ ...product, quantity: 1 });
             }
 
             updateCartUI();
-            openCart();
-            showToast(`Added "${product.title}" to bag!`);
+            showToast(`Added "${product.title}" to cart`);
+            toggleCart(true);
         }
 
-        function changeQuantity(productId, delta) {
-            const item = cart.find(i => i.id === productId);
+        function updateQuantity(productId, delta) {
+            const item = cart.find(p => p.id === productId);
             if (!item) return;
 
             item.quantity += delta;
             if (item.quantity <= 0) {
-                removeFromCart(productId);
-                return;
+                cart = cart.filter(p => p.id !== productId);
             }
             updateCartUI();
         }
 
         function removeFromCart(productId) {
-            const item = cart.find(i => i.id === productId);
-            cart = cart.filter(i => i.id !== productId);
+            cart = cart.filter(p => p.id !== productId);
             updateCartUI();
-            if (item) showToast(`Removed "${item.title}" from bag`, 'info');
         }
 
         function updateCartUI() {
-            const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalCount;
+            cartDrawerBadge.textContent = `${totalCount} item${totalCount === 1 ? '' : 's'}`;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="h-64 flex flex-col items-center justify-center text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400 mb-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        </div>
+                        <h4 class="font-bold text-slate-700 text-sm">Your cart is empty</h4>
+                        <p class="text-xs text-slate-400 mt-1 max-w-[200px]">Explore our catalog and discover curated modern goods.</p>
+                    </div>
+                `;
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="flex items-center gap-3.5 bg-white p-3 rounded-2xl border border-slate-100 shadow-sm">
+                        <img src="${item.image}" alt="${item.title}" class="w-16 h-16 rounded-xl object-cover bg-slate-100 flex-shrink-0" />
+                        <div class="flex-1 min-w-0">
+                            <h4 class="text-xs font-bold text-slate-900 truncate">${item.title}</h4>
+                            <span class="text-xs text-slate-500 font-medium">$${item.price.toFixed(2)} each</span>
+                            <div class="flex items-center gap-2 mt-2">
+                                <div class="flex items-center border border-slate-200 rounded-lg bg-slate-50">
+                                    <button 
+                                        type="button"
+                                        aria-label="Decrease quantity of ${item.title}" 
+                                        onclick="updateQuantity(${item.id}, -1)" 
+                                        class="px-2 py-0.5 text-slate-600 hover:text-slate-900 text-xs font-bold"
+                                    >−</button>
+                                    <span class="px-2 text-xs font-bold text-slate-800">${item.quantity}</span>
+                                    <button 
+                                        type="button"
+                                        aria-label="Increase quantity of ${item.title}" 
+                                        onclick="updateQuantity(${item.id}, 1)" 
+                                        class="px-2 py-0.5 text-slate-600 hover:text-slate-900 text-xs font-bold"
+                                    >+</button>
+                                </div>
+                                <button 
+                                    type="button"
+                                    aria-label="Remove ${item.title} from cart"
+                                    onclick="removeFromCart(${item.id})" 
+                                    class="text-[11px] text-red-500 hover:underline font-medium"
+                                >Remove</button>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-slate-900">$${(item.price * item.quantity).toFixed(2)}</span>
+                    </div>
+                `).join('');
+            }
+
+            // Financial Calculations
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const discountAmount = subtotal * discountPercent;
-            const shipping = (subtotal > 0 && subtotal < FREE_SHIPPING_THRESHOLD) ? 12.00 : 0;
-            const grandTotal = Math.max(0, subtotal - discountAmount + shipping);
+            const discount = subtotal * discountPercent;
+            const isFreeShipping = subtotal >= FREE_SHIPPING_THRESHOLD || subtotal === 0;
+            const shipping = isFreeShipping ? 0 : 15.00;
+            const total = Math.max(0, subtotal - discount + shipping);
 
-            // Update Badges
-            cartCountBadge.textContent = totalQty;
-            drawerItemCountBadge.textContent = `${totalQty} item${totalQty === 1 ? '' : 's'}`;
-            headerCartTotal.textContent = `$${subtotal.toFixed(2)}`;
-
-            // Pricing breakdowns
             cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
-            cartDiscount.textContent = `-$${discountAmount.toFixed(2)}`;
-            cartShipping.textContent = shipping === 0 ? (subtotal === 0 ? '$0.00' : 'FREE') : `$${shipping.toFixed(2)}`;
-            cartGrandTotal.textContent = `$${grandTotal.toFixed(2)}`;
+            cartDiscount.textContent = `-$${discount.toFixed(2)}`;
+            cartShipping.textContent = isFreeShipping ? 'FREE' : `$${shipping.toFixed(2)}`;
+            cartTotal.textContent = `$${total.toFixed(2)}`;
 
             if (discountPercent > 0) {
                 discountRow.classList.remove('hidden');
@@ -710,148 +501,26 @@
                 discountRow.classList.add('hidden');
             }
 
-            // Free shipping bar calculation
+            // Shipping Progress
             const progress = Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100);
             shippingProgressBar.style.width = `${progress}%`;
-            shippingPercent.textContent = `${Math.round(progress)}%`;
-
-            if (subtotal >= FREE_SHIPPING_THRESHOLD) {
-                shippingGoalText.innerHTML = `🎉 You unlocked <strong>FREE Express Shipping!</strong>`;
-            } else if (subtotal === 0) {
-                shippingGoalText.textContent = `Add $${FREE_SHIPPING_THRESHOLD}.00 for FREE Express Shipping`;
+            if (subtotal === 0) {
+                shippingProgressText.textContent = `Add items to unlock free shipping`;
+            } else if (subtotal >= FREE_SHIPPING_THRESHOLD) {
+                shippingProgressText.textContent = `🎉 You've qualified for free shipping!`;
             } else {
                 const diff = (FREE_SHIPPING_THRESHOLD - subtotal).toFixed(2);
-                shippingGoalText.innerHTML = `Add <strong>$${diff}</strong> more to get <strong>FREE Express Shipping</strong>`;
-            }
-
-            // Render Cart Drawer list
-            if (cart.length === 0) {
-                cartItemsList.innerHTML = `
-                    <div class="h-full flex flex-col items-center justify-center text-center py-16 text-slate-400">
-                        <div class="w-14 h-14 rounded-full bg-slate-100 flex items-center justify-center mb-3">
-                            <i data-lucide="shopping-bag" class="w-6 h-6 text-slate-300"></i>
-                        </div>
-                        <p class="font-bold text-slate-700 text-sm">Your shopping bag is empty</p>
-                        <p class="text-xs text-slate-400 mt-1 max-w-[200px]">Discover our curated goods and fill up your cart.</p>
-                    </div>
-                `;
-            } else {
-                cartItemsList.innerHTML = cart.map(item => `
-                    <div class="py-4 flex gap-3.5 items-center">
-                        <img src="${item.image}" alt="${item.title}" class="w-16 h-16 rounded-xl object-cover border border-slate-100 flex-shrink-0">
-                        <div class="flex-1 min-w-0">
-                            <h4 class="text-xs sm:text-sm font-semibold text-slate-800 truncate">${item.title}</h4>
-                            <span class="text-xs text-slate-400 font-medium">$${item.price.toFixed(2)} each</span>
-                            
-                            <div class="flex items-center gap-2 mt-2">
-                                <div class="inline-flex items-center border border-slate-200 rounded-lg bg-white">
-                                    <button onclick="changeQuantity(${item.id}, -1)" class="w-6 h-6 flex items-center justify-center text-slate-500 hover:text-slate-900 active:bg-slate-100 rounded-l">
-                                        <i data-lucide="minus" class="w-3 h-3"></i>
-                                    </button>
-                                    <span class="w-7 text-center text-xs font-bold text-slate-800">${item.quantity}</span>
-                                    <button onclick="changeQuantity(${item.id}, 1)" class="w-6 h-6 flex items-center justify-center text-slate-500 hover:text-slate-900 active:bg-slate-100 rounded-r">
-                                        <i data-lucide="plus" class="w-3 h-3"></i>
-                                    </button>
-                                </div>
-
-                                <button onclick="removeFromCart(${item.id})" class="text-slate-400 hover:text-rose-500 p-1 transition-colors" title="Delete">
-                                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <span class="font-bold text-xs sm:text-sm text-slate-900">
-                                $${(item.price * item.quantity).toFixed(2)}
-                            </span>
-                        </div>
-                    </div>
-                `).join('');
-            }
-
-            lucide.createIcons();
-        }
-
-        function openCart() {
-            cartDrawer.classList.remove('translate-x-full');
-            drawerOverlay.classList.remove('opacity-0', 'pointer-events-none');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeCart() {
-            cartDrawer.classList.add('translate-x-full');
-            drawerOverlay.classList.add('opacity-0', 'pointer-events-none');
-            document.body.style.overflow = '';
-        }
-
-        function openQuickView(id) {
-            const product = products.find(p => p.id === id);
-            if (!product) return;
-
-            currentModalProductId = product.id;
-            document.getElementById('modalImg').src = product.image;
-            document.getElementById('modalTitle').textContent = product.title;
-            document.getElementById('modalCategory').textContent = product.category;
-            document.getElementById('modalBadge').textContent = product.badge;
-            document.getElementById('modalRating').textContent = product.rating;
-            document.getElementById('modalReviews').textContent = `${product.reviews} reviews`;
-            document.getElementById('modalPrice').textContent = `$${product.price.toFixed(2)}`;
-            document.getElementById('modalDescription').textContent = product.description;
-
-            quickViewModal.classList.remove('opacity-0', 'pointer-events-none');
-            quickViewModal.children[0].classList.remove('scale-95');
-            document.body.style.overflow = 'hidden';
-            lucide.createIcons();
-        }
-
-        function closeQuickView() {
-            quickViewModal.classList.add('opacity-0', 'pointer-events-none');
-            quickViewModal.children[0].classList.add('scale-95');
-            if (cartDrawer.classList.contains('translate-x-full')) {
-                document.body.style.overflow = '';
+                shippingProgressText.textContent = `Add $${diff} more for FREE shipping`;
             }
         }
 
-        // Coupon Logic
-        applyCouponBtn.addEventListener('click', () => {
-            const val = couponInput.value.trim().toUpperCase();
-            if (val === 'AURA20') {
-                discountPercent = 0.20;
-                couponMessage.textContent = '✓ 20% discount applied successfully!';
-                couponMessage.className = 'text-xs font-semibold text-emerald-600';
-                couponMessage.classList.remove('hidden');
-                updateCartUI();
-            } else if (val === '') {
-                couponMessage.textContent = 'Please enter a coupon code.';
-                couponMessage.className = 'text-xs font-semibold text-rose-500';
-                couponMessage.classList.remove('hidden');
-            } else {
-                couponMessage.textContent = 'Invalid promo code. Try "AURA20"';
-                couponMessage.className = 'text-xs font-semibold text-rose-500';
-                couponMessage.classList.remove('hidden');
-            }
-        });
+        // Search & Filters
+        function handleSearch(val) {
+            searchQuery = val;
+            if (searchInput.value !== val) searchInput.value = val;
+            if (mobileSearchInput.value !== val) mobileSearchInput.value = val;
 
-        // Category Pill Filter Clicks
-        document.querySelectorAll('.filter-pill').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                document.querySelectorAll('.filter-pill').forEach(b => {
-                    b.classList.remove('active', 'bg-slate-900', 'text-white');
-                    b.classList.add('bg-white', 'text-slate-600');
-                });
-                btn.classList.add('active', 'bg-slate-900', 'text-white');
-                btn.classList.remove('bg-white', 'text-slate-600');
-                activeCategory = btn.getAttribute('data-category');
-                renderProducts();
-            });
-        });
-
-        // Search Handlers
-        function handleSearchInput(e) {
-            searchQuery = e.target.value;
-            searchInput.value = searchQuery;
-            mobileSearchInput.value = searchQuery;
-
-            if (searchQuery.length > 0) {
+            if (val.trim()) {
                 clearSearchBtn.classList.remove('hidden');
             } else {
                 clearSearchBtn.classList.add('hidden');
@@ -859,84 +528,66 @@
             renderProducts();
         }
 
-        searchInput.addEventListener('input', handleSearchInput);
-        mobileSearchInput.addEventListener('input', handleSearchInput);
+        function clearSearchInput() {
+            handleSearch('');
+            searchInput.focus();
+        }
 
-        clearSearchBtn.addEventListener('click', () => {
+        function filterProducts(cat, el) {
+            currentCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.className = 'filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white text-slate-600 border border-slate-200 hover:border-slate-300';
+            });
+            el.className = 'filter-btn active px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-brand-500 text-white shadow-sm';
+            renderProducts();
+        }
+
+        function handleSort(val) {
+            sortOption = val;
+            renderProducts();
+        }
+
+        function resetFilters() {
             searchQuery = '';
             searchInput.value = '';
             mobileSearchInput.value = '';
             clearSearchBtn.classList.add('hidden');
-            renderProducts();
-        });
+            const defaultBtn = document.querySelector('.filter-btn');
+            filterProducts('all', defaultBtn);
+        }
 
-        document.getElementById('resetFiltersBtn').addEventListener('click', () => {
-            searchQuery = '';
-            searchInput.value = '';
-            mobileSearchInput.value = '';
-            clearSearchBtn.classList.add('hidden');
-            document.querySelector('[data-category="all"]').click();
-        });
-
-        // Sort Handler
-        sortSelect.addEventListener('change', (e) => {
-            sortBy = e.target.value;
-            renderProducts();
-        });
-
-        // Drawer toggles
-        cartBtn.addEventListener('click', openCart);
-        closeCartBtn.addEventListener('click', closeCart);
-        drawerOverlay.addEventListener('click', closeCart);
-
-        // Modal triggers
-        closeQuickViewBtn.addEventListener('click', closeQuickView);
-        quickViewModal.addEventListener('click', (e) => {
-            if (e.target === quickViewModal) closeQuickView();
-        });
-
-        modalAddToCartBtn.addEventListener('click', () => {
-            if (currentModalProductId) {
-                addToCart(currentModalProductId);
-                closeQuickView();
+        function applyPromo() {
+            const input = document.getElementById('promoCodeInput');
+            const code = input.value.trim().toUpperCase();
+            if (code === 'AURA20') {
+                discountPercent = 0.20;
+                updateCartUI();
+                showToast('20% Promo discount applied!');
+                input.value = '';
+            } else {
+                showToast('Invalid promo code');
             }
-        });
+        }
 
-        // Wishlist header icon jump to saved
-        document.getElementById('wishlistHeaderBtn').addEventListener('click', () => {
-            const savedPill = document.querySelector('[data-category="favorites"]');
-            if (savedPill) savedPill.click();
-        });
-
-        // Checkout Button Action
-        document.getElementById('checkoutBtn').addEventListener('click', () => {
+        function handleCheckout() {
             if (cart.length === 0) {
-                showToast('Your bag is empty! Add items first.', 'info');
+                showToast('Your cart is empty');
                 return;
             }
-            showToast('Order placed! Redirecting to secure checkout...', 'success');
+            showToast('Redirecting to checkout...');
+        }
+
+        function showToast(text) {
+            toastMsg.textContent = text;
+            toast.classList.remove('opacity-0', 'translate-y-20', 'pointer-events-none');
             setTimeout(() => {
-                cart = [];
-                discountPercent = 0;
-                couponInput.value = '';
-                couponMessage.classList.add('hidden');
-                updateCartUI();
-                closeCart();
-            }, 1800);
-        });
+                toast.classList.add('opacity-0', 'translate-y-20', 'pointer-events-none');
+            }, 2600);
+        }
 
-        // Keyboard escape accessibility
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeCart();
-                closeQuickView();
-            }
-        });
-
-        // Initialization
+        // Initial Initialization
         renderProducts();
         updateCartUI();
-        lucide.createIcons();
     </script>
 </body>
 </html>
